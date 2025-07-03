@@ -1,0 +1,175 @@
+# iSend Document Flow
+
+**Plateforme de distribution sécurisée de documents PDF**
+
+---
+
+## 🚀 **Description**
+
+iSend Document Flow est une application web moderne permettant l'envoi et la lecture sécurisée de documents PDF. L'application offre une interface intuitive pour la gestion des documents, des destinataires et des statistiques d'utilisation.
+
+## 🛠 **Technologies**
+
+- **Frontend** : React 18 + TypeScript + Vite
+- **Backend** : PHP 8.2 + MySQL
+- **UI** : Tailwind CSS + Shadcn/ui
+- **Authentification** : JWT
+- **PDF** : PDF.js + React-PDF
+
+## 📋 **Fonctionnalités**
+
+### **Utilisateurs**
+- ✅ Authentification sécurisée
+- ✅ Gestion des profils utilisateur
+- ✅ Tableau de bord personnalisé
+- ✅ Paramètres utilisateur
+
+### **Documents**
+- ✅ Upload de documents PDF
+- ✅ Gestion des métadonnées
+- ✅ Visualisation sécurisée
+- ✅ Historique des documents
+
+### **Destinataires**
+- ✅ Gestion des destinataires
+- ✅ Envoi sécurisé de documents
+- ✅ Suivi des accès
+- ✅ Statistiques d'utilisation
+
+### **Administration**
+- ✅ Tableau de bord administrateur
+- ✅ Gestion des utilisateurs
+- ✅ Gestion des abonnements
+- ✅ Paramètres système
+
+## 🚀 **Installation**
+
+### **Prérequis**
+- Node.js 18+
+- PHP 8.2+
+- MySQL 8.0+
+- MAMP/XAMPP (recommandé)
+
+### **Frontend**
+```bash
+cd front-end
+npm install
+npm run dev
+```
+
+### **Backend**
+```bash
+cd backend-php
+# Configurer la base de données dans includes/db.php
+# Importer database.sql
+# Configurer les paramètres dans includes/settings.php
+```
+
+## 🔧 **Configuration**
+
+### **Base de données**
+1. Créer une base de données MySQL
+2. Importer le fichier `database.sql`
+3. Configurer les paramètres de connexion dans `includes/db.php`
+
+### **Paramètres système**
+Les paramètres système sont configurables via l'interface d'administration :
+- Limites d'abonnement
+- Configuration email
+- Paramètres de sécurité
+- Templates de messages
+
+## 📊 **Architecture**
+
+### **Frontend (React/TypeScript)**
+```
+src/
+├── components/          # Composants React
+│   ├── iSend/          # Composants métier
+│   ├── recipient/      # Composants destinataires
+│   └── ui/             # Composants UI
+├── services/           # Services API
+├── hooks/              # Hooks React
+└── pages/              # Pages de l'application
+```
+
+### **Backend (PHP)**
+```
+backend-php/
+├── api/                # Endpoints API
+├── includes/           # Classes et utilitaires
+├── uploads/            # Documents uploadés
+└── vendor/             # Dépendances Composer
+```
+
+## 🔒 **Sécurité**
+
+- **Authentification JWT** avec expiration automatique
+- **Row-Level Security** pour l'isolation multi-tenant
+- **Validation des permissions** sur chaque action
+- **Protection contre les attaques** (CSRF, XSS, SQL Injection)
+- **Chiffrement des données** sensibles
+
+## 📈 **Statistiques**
+
+L'application fournit des statistiques détaillées :
+- Documents envoyés et lus
+- Activité des utilisateurs
+- Performance du système
+- Rapports d'utilisation
+
+## 🎯 **Utilisation**
+
+### **Envoi de documents**
+1. Se connecter à l'application
+2. Uploader un document PDF
+3. Ajouter des métadonnées
+4. Sélectionner les destinataires
+5. Envoyer le document
+
+### **Lecture de documents**
+1. Cliquer sur le lien reçu par email
+2. S'authentifier (si requis)
+3. Consulter le document
+4. Accéder aux statistiques
+
+## 🔧 **Développement**
+
+### **Scripts disponibles**
+```bash
+npm run dev          # Serveur de développement
+npm run build        # Build de production
+npm run lint         # Vérification du code
+npm run preview      # Prévisualisation du build
+```
+
+### **Tests**
+```bash
+# Tests d'intégration
+node test-final-integration.js
+
+# Tests spécifiques
+node test-auth.js
+node test-dashboard.js
+```
+
+## 📝 **Documentation**
+
+- **Guide d'administration** : `GUIDE_ADMINISTRATION.md`
+- **Guide des paramètres** : `GUIDE_PARAMETRES_SYSTEME.md`
+- **Rapports d'intégration** : `RAPPORT_INTEGRATION_*.md`
+
+## 🤝 **Support**
+
+Pour toute question ou problème :
+1. Consulter la documentation
+2. Vérifier les logs d'erreur
+3. Contacter l'équipe de développement
+
+## 📄 **Licence**
+
+Projet privé - iSend Document Flow
+
+---
+
+**Développé avec ❤️ pour la distribution sécurisée de documents**

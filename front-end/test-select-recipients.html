@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sélection Destinataires</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; padding: 10px; background: #f0f8ff; border: 1px solid #b0d4f1; border-radius: 5px; }
+        .subscriber-list { margin-top: 10px; }
+        .subscriber-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border: 1px solid #ddd; margin: 5px 0; border-radius: 3px; }
+        .status-badge { padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+        .status-actif { background: #d4edda; color: #155724; }
+        .status-inactif { background: #f8d7da; color: #721c24; }
+        .selected { background: #e8f5e8; border-color: #28a745; }
+    </style>
+</head>
+<body>
+    <h1>Test de Sélection des Destinataires</h1>
+    
+    <div class="test-section">
+        <h3>Simulation de la fonctionnalité</h3>
+        
+        <div class="checkbox-container">
+            <input type="checkbox" id="select-all-active" checked>
+            <label for="select-all-active">Sélectionner tous les abonnés actifs</label>
+            <span class="status-badge status-actif">3 actifs</span>
+        </div>
+        
+        <div class="subscriber-list">
+            <div class="subscriber-item selected">
+                <div>
+                    <strong>Jean Dupont</strong><br>
+                    <small>jean.dupont@email.com</small><br>
+                    <span class="status-badge status-actif">Actif</span>
+                </div>
+                <button>Ajouté</button>
+            </div>
+            
+            <div class="subscriber-item selected">
+                <div>
+                    <strong>Marie Martin</strong><br>
+                    <small>marie.martin@email.com</small><br>
+                    <span class="status-badge status-actif">Actif</span>
+                </div>
+                <button>Ajouté</button>
+            </div>
+            
+            <div class="subscriber-item selected">
+                <div>
+                    <strong>Pierre Durand</strong><br>
+                    <small>pierre.durand@email.com</small><br>
+                    <span class="status-badge status-actif">Actif</span>
+                </div>
+                <button>Ajouté</button>
+            </div>
+            
+            <div class="subscriber-item">
+                <div>
+                    <strong>Sophie Bernard</strong><br>
+                    <small>sophie.bernard@email.com</small><br>
+                    <span class="status-badge status-inactif">Inactif</span>
+                </div>
+                <button>Ajouter</button>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h4>Destinataires sélectionnés (3)</h4>
+            <ul>
+                <li>jean.dupont@email.com</li>
+                <li>marie.martin@email.com</li>
+                <li>pierre.durand@email.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simulation de la logique
+        const checkbox = document.getElementById('select-all-active');
+        const subscriberItems = document.querySelectorAll('.subscriber-item');
+        
+        checkbox.addEventListener('change', function() {
+            const isChecked = this.checked;
+            
+            subscriberItems.forEach(item => {
+                const statusBadge = item.querySelector('.status-badge');
+                const button = item.querySelector('button');
+                
+                if (statusBadge.textContent === 'Actif') {
+                    if (isChecked) {
+                        item.classList.add('selected');
+                        button.textContent = 'Ajouté';
+                        button.disabled = true;
+                    } else {
+                        item.classList.remove('selected');
+                        button.textContent = 'Ajouter';
+                        button.disabled = false;
+                    }
+                }
+            });
+            
+            updateSelectedCount();
+        });
+        
+        function updateSelectedCount() {
+            const selectedItems = document.querySelectorAll('.subscriber-item.selected');
+            console.log('Nombre d\'abonnés sélectionnés:', selectedItems.length);
+        }
+        
+        // Initialiser
+        updateSelectedCount();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,51 @@
+RewriteEngine On
+
+# Redirection vers index.php pour les routes non trouvées
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Headers de sécurité
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Gestion des erreurs
+ErrorDocument 404 /backend-php/api/error.php
+ErrorDocument 500 /backend-php/api/error.php
+
+# Protection des fichiers sensibles
+<Files "*.sql">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "composer.*">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Autoriser l'accès aux fichiers d'API
+<Files "*.php">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Configuration pour les uploads
+<Directory "uploads">
+    Options -Indexes
+    Order allow,deny
+    Allow from all
+</Directory>
+
+# Limite de taille pour les uploads
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value memory_limit 256M
